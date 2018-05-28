@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Viktoria Gužovskaja](https://up.htmlacademy.ru/ecmascript/5/user/369085).
-* Наставник: `Неизвестно`.
+* Наставник: `Николай Яшин`.
 
 ---
 
