@@ -19,16 +19,23 @@ const select = (index) => {
   selectTemplate(templates[current]);
 };
 
-const backBtn = document.querySelector(`.arrows__wrap button`);
+const countNextBtnClicks = () => {
+  const nextBtn = document.querySelector(`.arrows__wrap button:nth-child(3)`);
 
-backBtn.addEventListener(`click`, () => {
-  current = current - 1;
-  select(current);
-});
+  nextBtn.addEventListener(`click`, () => {
+    current = current + 1;
+    select(current);
+  });
+};
 
-const nextBtn = document.querySelector(`.arrows__wrap button:nth-child(3)`);
+const countBackBtnClicks = () => {
+  const backBtn = document.querySelector(`.arrows__wrap button`);
 
-nextBtn.addEventListener(`click`, () => {
-  current = current + 1;
-  select(current);
-});
+  backBtn.addEventListener(`click`, () => {
+    current = current - 1;
+    select(current);
+  });
+};
+
+countNextBtnClicks();
+countBackBtnClicks();
