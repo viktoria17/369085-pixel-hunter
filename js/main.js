@@ -19,6 +19,20 @@ const select = (index) => {
   selectTemplate(templates[current]);
 };
 
+const countKeyboardClicks = () => {
+  addEventListener(`keydown`, (e) => {
+    if (e.keyCode === 39) {
+      current = current + 1;
+      select(current);
+    } else if (e.keyCode === 37) {
+      current = current - 1;
+      select(current);
+    }
+  });
+};
+
+countKeyboardClicks();
+
 const countNextBtnClicks = () => {
   const nextBtn = document.querySelector(`.arrows__wrap button:nth-child(3)`);
 
