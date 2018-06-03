@@ -2,30 +2,30 @@
 
 const mainElement = document.querySelector(`.central`);
 
-const selectTemplate = (template) => {
+const selectScreen = (screen) => {
   mainElement.innerHTML = ``;
-  mainElement.appendChild(template.cloneNode(true));
+  mainElement.appendChild(screen.cloneNode(true));
 };
 
-const templates = Array.from(document.querySelectorAll(`template`)).map((it) => it.content);
+const screens = Array.from(document.querySelectorAll(`template`)).map((it) => it.content);
 
-selectTemplate(templates[0]);
+selectScreen(screens[0]);
 
 let current = 0;
 const select = (index) => {
-  index = index < 0 ? templates.length - 1 : index;
-  index = index >= templates.length ? 0 : index;
+  index = index < 0 ? screens.length - 1 : index;
+  index = index >= screens.length ? 0 : index;
   current = index;
-  selectTemplate(templates[current]);
+  selectScreen(screens[current]);
 };
 
 const countKeyboardClicks = () => {
   addEventListener(`keydown`, (e) => {
     if (e.keyCode === 39) {
-      current = current + 1;
+      current++;
       select(current);
     } else if (e.keyCode === 37) {
-      current = current - 1;
+      current--;
       select(current);
     }
   });
@@ -37,7 +37,7 @@ const countNextBtnClicks = () => {
   const nextBtn = document.querySelector(`.arrows__wrap button:nth-child(3)`);
 
   nextBtn.addEventListener(`click`, () => {
-    current = current + 1;
+    current++;
     select(current);
   });
 };
@@ -46,7 +46,7 @@ const countBackBtnClicks = () => {
   const backBtn = document.querySelector(`.arrows__wrap button`);
 
   backBtn.addEventListener(`click`, () => {
-    current = current - 1;
+    current--;
     select(current);
   });
 };
