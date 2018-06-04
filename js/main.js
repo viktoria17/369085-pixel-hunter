@@ -19,7 +19,7 @@ const select = (index) => {
   selectScreen(screens[current]);
 };
 
-const countKeyboardClicks = () => {
+const bindKeyboardEvents = () => {
   addEventListener(`keydown`, (e) => {
     if (e.keyCode === 39) {
       current++;
@@ -31,7 +31,7 @@ const countKeyboardClicks = () => {
   });
 };
 
-countKeyboardClicks();
+bindKeyboardEvents();
 
 const createNextBtn = () => {
   const nextBtn = document.createElement(`button`);
@@ -71,7 +71,7 @@ const addButtonsWithStyles = () => {
 
 addButtonsWithStyles();
 
-const countNextBtnClicks = () => {
+const bindNextBtnClickEvents = () => {
   const nextBtn = document.querySelector(`.arrows__wrap button:nth-child(3)`);
 
   nextBtn.addEventListener(`click`, () => {
@@ -80,7 +80,7 @@ const countNextBtnClicks = () => {
   });
 };
 
-const countBackBtnClicks = () => {
+const bindBackBtnClickEvents = () => {
   const backBtn = document.querySelector(`.arrows__wrap button`);
 
   backBtn.addEventListener(`click`, () => {
@@ -89,5 +89,5 @@ const countBackBtnClicks = () => {
   });
 };
 
-countNextBtnClicks();
-countBackBtnClicks();
+bindNextBtnClickEvents();
+bindBackBtnClickEvents();
