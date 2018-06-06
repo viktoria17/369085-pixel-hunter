@@ -1,5 +1,3 @@
-'use strict';
-
 const mainElement = document.querySelector(`.central`);
 
 const selectScreen = (screen) => {
