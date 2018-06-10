@@ -1,3 +1,5 @@
+'use strict';
+
 import greetingTemplate from './greeting';
 import rulesTemplate from './rules';
 import gameTemplate from './game-1';
