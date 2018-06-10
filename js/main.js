@@ -13,28 +13,28 @@ import introTemplate from './intro';
 const mainElement = document.querySelector(`.central`);
 
 const getTemplates = () => {
-	const mainElement = document.querySelector(`#app`);
+  const mainElement = document.querySelector(`#app`);
 
-	mainElement.innerHTML = ``;
-	mainElement.appendChild(greetingTemplate);
-	mainElement.appendChild(rulesTemplate);
-	mainElement.appendChild(gameTemplate);
-	mainElement.appendChild(gameTwoTemplate);
-	mainElement.appendChild(gameThreeTemplate);
-	mainElement.appendChild(modalConfirmTemplate);
-	mainElement.appendChild(modalErrorTemplate);
-	mainElement.appendChild(statsTemplate);
+  mainElement.innerHTML = ``;
+  mainElement.appendChild(greetingTemplate);
+  mainElement.appendChild(rulesTemplate);
+  mainElement.appendChild(gameTemplate);
+  mainElement.appendChild(gameTwoTemplate);
+  mainElement.appendChild(gameThreeTemplate);
+  mainElement.appendChild(modalConfirmTemplate);
+  mainElement.appendChild(modalErrorTemplate);
+  mainElement.appendChild(statsTemplate);
 
-	return mainElement;
+  return mainElement;
 };
 
 const getIntroTemplate = () => {
-	const mainElement = document.querySelector(`#main`);
+  const mainElement = document.querySelector(`#main`);
 
-	mainElement.innerHTML = ``;
-	mainElement.appendChild(introTemplate);
+  mainElement.innerHTML = ``;
+  mainElement.appendChild(introTemplate);
 
-	return mainElement;
+  return mainElement;
 };
 
 const selectScreen = (screen) => {
@@ -43,13 +43,13 @@ const selectScreen = (screen) => {
 };
 
 function getScreens() {
-	getIntroTemplate();
-	getTemplates();
+  getIntroTemplate();
+  getTemplates();
 
-	const screens = Array.from(document.querySelectorAll(`template`)).map((it) => it.content);
+  const screens = Array.from(document.querySelectorAll(`template`)).map((it) => it.content);
 
-	selectScreen(screens[0]);
-	return screens;
+  selectScreen(screens[0]);
+  return screens;
 }
 
 const screens = getScreens();
