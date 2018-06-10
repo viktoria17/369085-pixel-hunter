@@ -1,5 +1,3 @@
-'use strict';
-
 import greetingTemplate from './greeting';
 import rulesTemplate from './rules';
 import gameTemplate from './game-1';
@@ -9,8 +7,6 @@ import modalConfirmTemplate from './modal-confirm';
 import modalErrorTemplate from './modal-error';
 import statsTemplate from './stats';
 import introTemplate from './intro';
-
-const mainElement = document.querySelector(`.central`);
 
 const getTemplates = () => {
   const mainElement = document.querySelector(`#app`);
@@ -38,7 +34,9 @@ const getIntroTemplate = () => {
 };
 
 const selectScreen = (screen) => {
-  mainElement.innerHTML = ``;
+	const mainElement = document.querySelector(`.central`);
+
+	mainElement.innerHTML = ``;
   mainElement.appendChild(screen.cloneNode(true));
 };
 
