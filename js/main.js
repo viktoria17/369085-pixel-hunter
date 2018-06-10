@@ -1,13 +1,56 @@
+import greetingTemplate from './greeting';
+import rulesTemplate from './rules';
+import gameTemplate from './game-1';
+import gameTwoTemplate from './game-2';
+import gameThreeTemplate from './game-3';
+import modalConfirmTemplate from './modal-confirm';
+import modalErrorTemplate from './modal-error';
+import statsTemplate from './stats';
+import introTemplate from './intro';
+
 const mainElement = document.querySelector(`.central`);
+
+const getTemplates = () => {
+	const mainElement = document.querySelector(`#app`);
+
+	mainElement.innerHTML = ``;
+	mainElement.appendChild(greetingTemplate);
+	mainElement.appendChild(rulesTemplate);
+	mainElement.appendChild(gameTemplate);
+	mainElement.appendChild(gameTwoTemplate);
+	mainElement.appendChild(gameThreeTemplate);
+	mainElement.appendChild(modalConfirmTemplate);
+	mainElement.appendChild(modalErrorTemplate);
+	mainElement.appendChild(statsTemplate);
+
+	return mainElement;
+};
+
+const getIntroTemplate = () => {
+	const mainElement = document.querySelector(`#main`);
+
+	mainElement.innerHTML = ``;
+	mainElement.appendChild(introTemplate);
+
+	return mainElement;
+};
 
 const selectScreen = (screen) => {
   mainElement.innerHTML = ``;
   mainElement.appendChild(screen.cloneNode(true));
 };
 
-const screens = Array.from(document.querySelectorAll(`template`)).map((it) => it.content);
+function getScreens() {
+	getIntroTemplate();
+	getTemplates();
 
-selectScreen(screens[0]);
+	const screens = Array.from(document.querySelectorAll(`template`)).map((it) => it.content);
+
+	selectScreen(screens[0]);
+	return screens;
+}
+
+const screens = getScreens();
 
 let current = 0;
 const select = (index) => {
