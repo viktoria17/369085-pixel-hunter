@@ -1,12 +1,12 @@
-import greetingTemplate from './greeting';
-import rulesTemplate from './rules';
-import gameTemplate from './game-1';
-import gameTwoTemplate from './game-2';
-import gameThreeTemplate from './game-3';
-import modalConfirmTemplate from './modal-confirm';
-import modalErrorTemplate from './modal-error';
-import statsTemplate from './stats';
-import introTemplate from './intro';
+import greetingTemplate from './templates/greeting';
+import rulesTemplate from './templates/rules';
+import gameTemplate from './templates/game-1';
+import gameTwoTemplate from './templates/game-2';
+import gameThreeTemplate from './templates/game-3';
+import modalConfirmTemplate from './templates/modal-confirm';
+import modalErrorTemplate from './templates/modal-error';
+import statsTemplate from './templates/stats';
+import introTemplate from './templates/intro';
 
 const getTemplates = () => {
   const mainElement = document.querySelector(`#app`);

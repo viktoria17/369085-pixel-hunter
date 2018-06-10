@@ -1,4 +1,4 @@
-import {getElementFromTemplate} from './util.js';
+import {getElementFromTemplate} from '../util';
 
 const wrapper =
   `<div class="greeting central--blur">

@@ -1,4 +1,4 @@
-import {getIntroElementFromTemplate} from "./util";
+import {getIntroElementFromTemplate} from '../util';
 
 const wrapper =
   `<h1 class="intro__asterisk">*</h1>

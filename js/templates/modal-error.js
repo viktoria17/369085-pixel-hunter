@@ -1,4 +1,4 @@
-import {getElementFromTemplate} from "./util";
+import {getElementFromTemplate} from '../util';
 
 const wrapper =
   `<section class="modal-error modal-error__wrap">
