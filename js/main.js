@@ -1,30 +1,13 @@
-import greetingTemplate from './templates/greeting';
-import rulesTemplate from './templates/rules';
-import gameTemplate from './templates/game-1';
-import gameTwoTemplate from './templates/game-2';
-import gameThreeTemplate from './templates/game-3';
-import modalConfirmTemplate from './templates/modal-confirm';
-import modalErrorTemplate from './templates/modal-error';
-import statsTemplate from './templates/stats';
 import introTemplate from './templates/intro';
+import {createScreenTemplates} from './create-templates';
 
-const getTemplates = () => {
-  const mainElement = document.querySelector(`#app`);
-
-  mainElement.innerHTML = ``;
-  mainElement.appendChild(greetingTemplate);
-  mainElement.appendChild(rulesTemplate);
-  mainElement.appendChild(gameTemplate);
-  mainElement.appendChild(gameTwoTemplate);
-  mainElement.appendChild(gameThreeTemplate);
-  mainElement.appendChild(modalConfirmTemplate);
-  mainElement.appendChild(modalErrorTemplate);
-  mainElement.appendChild(statsTemplate);
-
-  return mainElement;
+const main = () => {
+	createScreenTemplates();
 };
 
-const getIntroTemplate = () => {
+main();
+
+export const getIntroTemplate = () => {
   const mainElement = document.querySelector(`#main`);
 
   mainElement.innerHTML = ``;
@@ -34,26 +17,26 @@ const getIntroTemplate = () => {
 };
 
 const selectScreen = (screen) => {
-	const mainElement = document.querySelector(`.central`);
+  const mainElement = document.querySelector(`.central`);
 
-	mainElement.innerHTML = ``;
+  mainElement.innerHTML = ``;
   mainElement.appendChild(screen.cloneNode(true));
 };
 
-function getScreens() {
+const initializeScreens = () => {
   getIntroTemplate();
-  getTemplates();
+  createScreenTemplates();
 
   const screens = Array.from(document.querySelectorAll(`template`)).map((it) => it.content);
 
   selectScreen(screens[0]);
   return screens;
-}
+};
 
-const screens = getScreens();
+const screens = initializeScreens();
 
 let current = 0;
-const select = (index) => {
+const checkIfAnyScreensLeft = (index) => {
   index = index < 0 ? screens.length - 1 : index;
   index = index >= screens.length ? 0 : index;
   current = index;
@@ -64,10 +47,10 @@ const bindKeyboardEvents = () => {
   addEventListener(`keydown`, (e) => {
     if (e.keyCode === 39) {
       current++;
-      select(current);
+      checkIfAnyScreensLeft(current);
     } else if (e.keyCode === 37) {
       current--;
-      select(current);
+      checkIfAnyScreensLeft(current);
     }
   });
 };
@@ -117,7 +100,7 @@ const bindNextBtnClickEvents = () => {
 
   nextBtn.addEventListener(`click`, () => {
     current++;
-    select(current);
+    checkIfAnyScreensLeft(current);
   });
 };
 
@@ -126,7 +109,7 @@ const bindBackBtnClickEvents = () => {
 
   backBtn.addEventListener(`click`, () => {
     current--;
-    select(current);
+    checkIfAnyScreensLeft(current);
   });
 };
 

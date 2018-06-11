@@ -12,3 +12,12 @@ export const getIntroElementFromTemplate = (template, templateId, className) => 
   wrapper.innerHTML = template.trim();
   return wrapper;
 };
+
+
+export const changeScreen = (element) => {
+	const mainElement = document.querySelector(`#app`);
+
+	mainElement.appendChild(element);
+
+	return mainElement;
+};
