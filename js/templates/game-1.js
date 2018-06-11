@@ -1,4 +1,4 @@
-import {getElementFromTemplate} from '../util'
+import {getElementFromTemplate} from '../util';
 
 const wrapper =
   `<header class="header">

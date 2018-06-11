@@ -9,13 +9,13 @@ import {changeScreen} from "./util";
 import modalConfirmTemplate from "./templates/modal-confirm";
 
 export const createScreenTemplates = () => {
-	changeScreen(greetingTemplate);
-	changeScreen(rulesTemplate);
-	changeScreen(gameTemplate);
-	changeScreen(gameTwoTemplate);
-	changeScreen(gameThreeTemplate);
-	changeScreen(modalConfirmTemplate);
-	changeScreen(modalErrorTemplate);
-	changeScreen(statsTemplate);
+  changeScreen(greetingTemplate);
+  changeScreen(rulesTemplate);
+  changeScreen(gameTemplate);
+  changeScreen(gameTwoTemplate);
+  changeScreen(gameThreeTemplate);
+  changeScreen(modalConfirmTemplate);
+  changeScreen(modalErrorTemplate);
+  changeScreen(statsTemplate);
 };
 

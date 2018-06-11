@@ -15,9 +15,9 @@ export const getIntroElementFromTemplate = (template, templateId, className) => 
 
 
 export const changeScreen = (element) => {
-	const mainElement = document.querySelector(`#app`);
+  const mainElement = document.querySelector(`#app`);
 
-	mainElement.appendChild(element);
+  mainElement.appendChild(element);
 
-	return mainElement;
+  return mainElement;
 };
