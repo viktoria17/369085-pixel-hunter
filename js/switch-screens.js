@@ -71,12 +71,12 @@ const showGameTwoScreen = () => {
   for (let index = 0; index < 2; index++) {
     photoButtons[index].addEventListener(`click`, () => {
       clickedButtonsState[index] = true;
-      changeState()
+      changeState();
     });
 
     paintButtons[index].addEventListener(`click`, () => {
       clickedButtonsState[index] = true;
-      changeState()
+      changeState();
     });
   }
 
@@ -104,7 +104,7 @@ const showGameOneScreen = () => {
   const rulesBtn = document.querySelector(`.rules__button.continue`);
 
   input.addEventListener(`keyup`, (event) => {
-    rulesBtn.disabled = event.currentTarget.value.length === 0
+    rulesBtn.disabled = event.currentTarget.value.length === 0;
   });
 
   rulesBtn.addEventListener(`click`, () => {
