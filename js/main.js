@@ -1,17 +1,8 @@
-import {createScreenTemplates} from './create-templates';
-import {
-  bindKeyboardEvents,
-  addButtonsWithStyles,
-  bindNextBtnClickEvents,
-  bindBackBtnClickEvents
-} from './switch-screens';
+import {addButtonsWithStyles, initializeScreens} from './switch-screens';
 
 const main = () => {
-  createScreenTemplates();
-  bindKeyboardEvents();
+  initializeScreens();
   addButtonsWithStyles();
-  bindNextBtnClickEvents();
-  bindBackBtnClickEvents();
 };
 
 main();
