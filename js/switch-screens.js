@@ -5,22 +5,21 @@ import gameOneTemplate from "./templates/game-1";
 import gameTwoTemplate from "./templates/game-2";
 import gameThreeTemplate from "./templates/game-3";
 import statsTemplate from "./templates/stats";
-import {changeScreen} from "./util";
-
-const selectScreen = (screen) => {
-  const mainElement = document.querySelector(`.central`);
-
-  mainElement.innerHTML = ``;
-  mainElement.appendChild(screen.cloneNode(true));
-};
 
 const screens = () => {
   return Array.from(document.querySelectorAll(`template`)).map((it) => it.content);
 };
 
+const selectScreen = (template) => {
+  const mainElement = document.querySelector(`.central`);
+
+  mainElement.innerHTML = ``;
+  mainElement.appendChild(template);
+  mainElement.appendChild(screens()[0].cloneNode(true));
+};
+
 const renderScreenTemplate = (template) => {
-  changeScreen(template);
-  selectScreen(screens()[0]);
+  selectScreen(template);
 };
 
 const renderIntroScreen = () => {
