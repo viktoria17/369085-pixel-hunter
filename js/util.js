@@ -13,7 +13,7 @@ export const getIntroElementFromTemplate = (template, templateId, className) => 
   return wrapper;
 };
 
-const mainElement = document.querySelector(`#app`);
+const mainElement = document.querySelector(`.central`);
 
 export const changeScreen = (element) => {
   mainElement.innerHTML = ``;
