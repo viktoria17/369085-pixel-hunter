@@ -30,4 +30,3 @@ const wrapper =
 const greetingTemplate = getElementFromTemplate(wrapper, `greeting`);
 
 export default greetingTemplate;
-

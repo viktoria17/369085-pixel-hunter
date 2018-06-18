@@ -18,10 +18,6 @@ const selectScreen = (template) => {
   mainElement.appendChild(screens()[0].cloneNode(true));
 };
 
-const renderScreenTemplate = (template) => {
-  selectScreen(template);
-};
-
 const renderIntroScreen = () => {
   const mainElement = document.querySelector(`#main`);
 
@@ -30,20 +26,20 @@ const renderIntroScreen = () => {
 };
 
 const showStatsScreen = () => {
-  renderScreenTemplate(gameThreeTemplate);
+	selectScreen(gameThreeTemplate);
 
   const optionButtons = document.querySelectorAll(`.game__option`);
 
   for (let index = 0; index < optionButtons.length; index++) {
     optionButtons[index].addEventListener(`click`, () => {
-      renderScreenTemplate(statsTemplate);
+			selectScreen(statsTemplate);
       returnToTheGreetingScreen();
     });
   }
 };
 
 const showGameThreeScreen = () => {
-  renderScreenTemplate(gameTwoTemplate);
+	selectScreen(gameTwoTemplate);
 
   const photoBtn = document.querySelector(`.game__answer--photo`);
   const paintBtn = document.querySelector(`.game__answer--paint`);
@@ -60,7 +56,7 @@ const showGameThreeScreen = () => {
 };
 
 const showGameTwoScreen = () => {
-  renderScreenTemplate(gameOneTemplate);
+	selectScreen(gameOneTemplate);
 
   const photoButtons = document.querySelectorAll(`.game__answer--photo`);
   const paintButtons = document.querySelectorAll(`.game__answer--paint`);
@@ -97,7 +93,7 @@ const returnToTheGreetingScreen = () => {
 };
 
 const showGameOneScreen = () => {
-  renderScreenTemplate(rulesTemplate);
+	selectScreen(rulesTemplate);
 
   const input = document.querySelector(`.rules__input`);
   const rulesBtn = document.querySelector(`.rules__button.continue`);
@@ -114,7 +110,7 @@ const showGameOneScreen = () => {
 };
 
 const showRulesScreen = () => {
-  renderScreenTemplate(greetingTemplate);
+	selectScreen(greetingTemplate);
 
   const continueBtn = document.querySelector(`.greeting__continue`);
 

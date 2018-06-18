@@ -3,7 +3,6 @@ export const getElementFromTemplate = (template, templateId) => {
   wrapper.id = templateId;
   wrapper.innerHTML = template.trim();
   return wrapper;
-  // return [wrapper.id, wrapper.innerHTML];
 };
 
 export const getIntroElementFromTemplate = (template, templateId, className) => {
