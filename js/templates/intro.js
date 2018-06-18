@@ -5,8 +5,6 @@ const wrapper =
   <p class="intro__motto"><sup>*</sup> Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.</p>
 `;
 
-const templateId = `intro`;
-const className = `intro`;
-const introTemplate = getIntroElementFromTemplate(wrapper, templateId, className);
+const introTemplate = getIntroElementFromTemplate(wrapper, `intro`, `intro`);
 
 export default introTemplate;

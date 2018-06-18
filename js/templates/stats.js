@@ -121,7 +121,6 @@ const wrapper =
   </footer>
 `;
 
-const templateId = `stats`;
-const statsTemplate = getElementFromTemplate(wrapper, templateId);
+const statsTemplate = getElementFromTemplate(wrapper, `stats`);
 
 export default statsTemplate;

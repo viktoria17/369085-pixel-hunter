@@ -37,7 +37,6 @@ const wrapper =
   </footer>
 `;
 
-const templateId = `rules`;
-const rulesTemplate = getElementFromTemplate(wrapper, templateId);
+const rulesTemplate = getElementFromTemplate(wrapper, `rules`);
 
 export default rulesTemplate;

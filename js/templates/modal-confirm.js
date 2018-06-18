@@ -14,7 +14,6 @@ const wrapper =
   </section>
 `;
 
-const templateId = `modal-confirm`;
-const modalConfirmTemplate = getElementFromTemplate(wrapper, templateId);
+const modalConfirmTemplate = getElementFromTemplate(wrapper, `modal-confirm`);
 
 export default modalConfirmTemplate;

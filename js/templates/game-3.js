@@ -55,7 +55,6 @@ const wrapper =
   </footer>
 `;
 
-const templateId = `game-3`;
-const gameThreeTemplate = getElementFromTemplate(wrapper, templateId);
+const gameThreeTemplate = getElementFromTemplate(wrapper, `game-3`);
 
 export default gameThreeTemplate;

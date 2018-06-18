@@ -27,8 +27,7 @@ const wrapper =
   </footer>
   `;
 
-const templateId = `greeting`;
-const greetingTemplate = getElementFromTemplate(wrapper, templateId);
+const greetingTemplate = getElementFromTemplate(wrapper, `greeting`);
 
 export default greetingTemplate;
 
