@@ -1,15 +1,12 @@
-export const getElementFromTemplate = (template, templateId) => {
+export const getElementFromTemplate = (template) => {
   const wrapper = document.createElement(`template`);
-  wrapper.id = templateId;
   wrapper.innerHTML = template.trim();
-  return wrapper;
+  return wrapper.innerHTML;
 };
 
-export const getIntroElementFromTemplate = (template, templateId, className) => {
+export const getIntroElementFromTemplate = (template, className) => {
   const wrapper = document.createElement(`div`);
-  wrapper.id = templateId;
   wrapper.className = className;
   wrapper.innerHTML = template.trim();
   return wrapper;
 };
-

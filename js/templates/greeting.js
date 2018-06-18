@@ -27,6 +27,6 @@ const wrapper =
   </footer>
   `;
 
-const greetingTemplate = getElementFromTemplate(wrapper, `greeting`);
+const greetingTemplate = getElementFromTemplate(wrapper);
 
 export default greetingTemplate;

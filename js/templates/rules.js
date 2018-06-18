@@ -37,6 +37,6 @@ const wrapper =
   </footer>
 `;
 
-const rulesTemplate = getElementFromTemplate(wrapper, `rules`);
+const rulesTemplate = getElementFromTemplate(wrapper);
 
 export default rulesTemplate;

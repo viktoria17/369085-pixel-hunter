@@ -9,6 +9,6 @@ const wrapper =
   </section>
 `;
 
-const modalErrorTemplate = getElementFromTemplate(wrapper, `modal-error`);
+const modalErrorTemplate = getElementFromTemplate(wrapper);
 
 export default modalErrorTemplate;

@@ -6,16 +6,10 @@ import gameTwoTemplate from "./templates/game-2";
 import gameThreeTemplate from "./templates/game-3";
 import statsTemplate from "./templates/stats";
 
-const screens = () => {
-  return Array.from(document.querySelectorAll(`template`)).map((it) => it.content);
-};
-
 const selectScreen = (template) => {
   const mainElement = document.querySelector(`.central`);
 
-  mainElement.innerHTML = ``;
-  mainElement.appendChild(template);
-  mainElement.appendChild(screens()[0].cloneNode(true));
+  mainElement.innerHTML = template;
 };
 
 const renderIntroScreen = () => {
@@ -26,20 +20,20 @@ const renderIntroScreen = () => {
 };
 
 const showStatsScreen = () => {
-	selectScreen(gameThreeTemplate);
+  selectScreen(gameThreeTemplate);
 
   const optionButtons = document.querySelectorAll(`.game__option`);
 
   for (let index = 0; index < optionButtons.length; index++) {
     optionButtons[index].addEventListener(`click`, () => {
-			selectScreen(statsTemplate);
+      selectScreen(statsTemplate);
       returnToTheGreetingScreen();
     });
   }
 };
 
 const showGameThreeScreen = () => {
-	selectScreen(gameTwoTemplate);
+  selectScreen(gameTwoTemplate);
 
   const photoBtn = document.querySelector(`.game__answer--photo`);
   const paintBtn = document.querySelector(`.game__answer--paint`);
@@ -56,7 +50,7 @@ const showGameThreeScreen = () => {
 };
 
 const showGameTwoScreen = () => {
-	selectScreen(gameOneTemplate);
+  selectScreen(gameOneTemplate);
 
   const photoButtons = document.querySelectorAll(`.game__answer--photo`);
   const paintButtons = document.querySelectorAll(`.game__answer--paint`);
@@ -93,7 +87,7 @@ const returnToTheGreetingScreen = () => {
 };
 
 const showGameOneScreen = () => {
-	selectScreen(rulesTemplate);
+  selectScreen(rulesTemplate);
 
   const input = document.querySelector(`.rules__input`);
   const rulesBtn = document.querySelector(`.rules__button.continue`);
@@ -110,7 +104,7 @@ const showGameOneScreen = () => {
 };
 
 const showRulesScreen = () => {
-	selectScreen(greetingTemplate);
+  selectScreen(greetingTemplate);
 
   const continueBtn = document.querySelector(`.greeting__continue`);
 
