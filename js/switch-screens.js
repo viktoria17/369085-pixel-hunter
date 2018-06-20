@@ -9,7 +9,12 @@ import statsTemplate from "./templates/stats";
 const selectScreen = (template) => {
   const mainElement = document.querySelector(`.central`);
 
-  mainElement.innerHTML = template;
+  mainElement.innerHTML = '';
+
+  const wrapper = document.createElement(`div`);
+
+  wrapper.innerHTML = template;
+  mainElement.appendChild(wrapper);
 };
 
 const renderIntroScreen = () => {

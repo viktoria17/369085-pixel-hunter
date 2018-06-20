@@ -1,7 +1,5 @@
 export const getElementFromTemplate = (template) => {
-  const wrapper = document.createElement(`template`);
-  wrapper.innerHTML = template.trim();
-  return wrapper.innerHTML;
+  return template.trim();
 };
 
 export const getIntroElementFromTemplate = (template, className) => {
