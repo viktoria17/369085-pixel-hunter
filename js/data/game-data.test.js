@@ -1,8 +1,8 @@
 import {assert} from 'chai';
 import {
   countPointsForCorrectAnswers,
-  gameIsFinished,
-  gameIsFailed,
+  isGameFinished,
+  isGameFailed,
   countLives,
   addPointsForLive,
   countFinalPoints,
@@ -143,68 +143,45 @@ describe(`Count points`, () => {
   });
 
   it(`should add an additional 150 points for 3 remaining lives`, () => {
-    let answers = [];
+    let answers = Array(10).fill({
+      time: 15,
+      isCorrect: true,
+    });
 
-    for (let i = 0; i < 10; i++) {
-      answers.push({
-        time: 15,
-        isCorrect: true,
-      });
-    }
-
-    assert.equal(gameIsFinished(answers), true);
+    assert.equal(isGameFinished(answers), true);
     assert.equal(addPointsForLive(answers), 150);
   });
 
   it(`should add an additional 100 points for 2 remaining lives`, () => {
-    let answers = [];
-
-    for (let i = 0; i < 9; i++) {
-      answers.push({
-        time: 15,
-        isCorrect: true,
-      });
-    }
-
-    answers.push({
+    let answers = Array(9).fill({
+      time: 15,
+      isCorrect: true,
+    }).concat({
       time: 15,
       isCorrect: false,
     });
 
-    assert.equal(gameIsFinished(answers), true);
+    assert.equal(isGameFinished(answers), true);
     assert.equal(addPointsForLive(answers), 100);
   });
 
   it(`should not add additional 50 points for 0 remaining lives`, () => {
-    let answers = [];
+    let answers = Array(7).fill({
+      time: 15, isCorrect: true,
+    }).concat(Array(3).fill({
+      time: 15,
+      isCorrect: false,
+    }));
 
-    for (let i = 0; i < 7; i++) {
-      answers.push({
-        time: 15,
-        isCorrect: true,
-      });
-    }
-
-    for (let i = 0; i < 3; i++) {
-      answers.push({
-        time: 15,
-        isCorrect: false,
-      });
-    }
-
-    assert.equal(gameIsFinished(answers), true);
+    assert.equal(isGameFinished(answers), true);
     assert.equal(addPointsForLive(answers), 0);
   });
 
   it(`should return 1150 points if the player answered all questions with an average speed and he has 3 lives`, () => {
-    let answers = [];
-
-    for (let i = 0; i < 10; i++) {
-      answers.push({
-        time: 15,
-        isCorrect: true,
-      });
-    }
+    let answers = Array(10).fill({
+      time: 15,
+      isCorrect: true,
+    });
 
     assert.equal(countFinalPoints(answers), 1150);
   });
@@ -212,62 +189,40 @@ describe(`Count points`, () => {
 
 describe(`Check if the game is over`, () => {
   it(`should finish the game if the player answered all questions`, () => {
-    let answers = [];
+    let answers = Array(10).fill({
+      time: 15,
+      isCorrect: true,
+    });
 
-    for (let i = 0; i < 10; i++) {
-      answers.push({
-        time: 15,
-        isCorrect: true,
-      });
-    }
-
-    assert.equal(gameIsFinished(answers), true);
+    assert.equal(isGameFinished(answers), true);
   });
 
   it(`should return -1 if the player answered less than 10 questions`, () => {
-    const answers = [
-      {
-        time: 15,
-        isCorrect: true,
-      },
-      {
-        time: 15,
-        isCorrect: true,
-      },
-    ];
+    const answers = Array(2).fill({
+      time: 15,
+      isCorrect: true,
+    });
 
-    assert.equal(gameIsFailed(answers), -1);
+    assert.equal(isGameFailed(answers), -1);
   });
 });
 
 describe(`Count lives`, () => {
 
   it(`should remain 3 lives if all answers are correct`, () => {
-    const answers = [
-      {
-        time: 15,
-        isCorrect: true,
-      },
-      {
-        time: 15,
-        isCorrect: true,
-      },
-    ];
+    const answers = Array(2).fill({
+      time: 15,
+      isCorrect: true,
+    });
 
     assert.equal(countLives(answers), 3);
   });
 
   it(`should remain 1 life if the player made 2 mistakes`, () => {
-    const answers = [
-      {
-        time: 15,
-        isCorrect: false,
-      },
-      {
-        time: 15,
-        isCorrect: false,
-      },
-    ];
+    const answers = Array(2).fill({
+      time: 15,
+      isCorrect: false,
+    });
 
     assert.equal(countLives(answers), 1);
   });
@@ -320,7 +275,7 @@ describe(`Count lives`, () => {
     ];
 
     assert.equal(countLives(answers), -1);
-    assert.equal(gameIsFinished(answers), true);
+    assert.equal(isGameFinished(answers), true);
   });
 
   it(`should take away 1 life if the player did not answer in 30 seconds`, () => {

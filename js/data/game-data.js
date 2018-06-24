@@ -1,11 +1,11 @@
 export const countPointsForCorrectAnswers = (answers) => {
   let score = 0;
 
-  for (let i = 0; i < answers.length; i++) {
-    if (answers[i].isCorrect) {
-      const averageAnswer = answers[i].time > 9 && answers[i].time < 21;
-      const fastAnswer = answers[i].time > 0 && answers[i].time < 10;
-      const slowAnswer = answers[i].time > 20 && answers[i].time < 31;
+  for (const answer of answers) {
+    if (answer.isCorrect) {
+      const averageAnswer = answer.time > 9 && answer.time < 21;
+      const fastAnswer = answer.time > 0 && answer.time < 10;
+      const slowAnswer = answer.time > 20 && answer.time < 31;
 
       if (averageAnswer) {
         score += 100;
@@ -20,33 +20,19 @@ export const countPointsForCorrectAnswers = (answers) => {
   return score;
 };
 
-export const gameIsFinished = (answers) => {
-  if (answers.length === 10) {
-    return true;
-  }
-
-  const lives = countLives(answers);
-
-  if (lives === -1) {
-    return true;
-  }
-
-  return false;
+export const isGameFinished = (answers) => {
+  return answers.length === 10 ? true : countLives(answers) === -1;
 };
 
-export const gameIsFailed = (answers) => {
-  if (answers.length < 10) {
-    return -1;
-  }
-
-  return false;
+export const isGameFailed = (answers) => {
+  return answers.length < 10 ? -1 : false;
 };
 
 export const countLives = (answers) => {
   let wrongAnswers = 0;
 
-  for (let i = 0; i < answers.length; i++) {
-    if (answers[i].isCorrect === false || answers[i].time > 30) {
+  for (const answer of answers) {
+    if (answer.isCorrect === false || answer.time > 30) {
       wrongAnswers += 1;
     }
   }
@@ -55,12 +41,7 @@ export const countLives = (answers) => {
 };
 
 export const addPointsForLive = (answers) => {
-  if (gameIsFinished(answers)) {
-    const lives = countLives(answers);
-    return lives * 50;
-  }
-
-  return 0;
+  return isGameFinished(answers) ? countLives(answers) * 50 : 0;
 };
 
 export const countFinalPoints = (answers) => {
