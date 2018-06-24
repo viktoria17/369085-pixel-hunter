@@ -53,3 +53,16 @@ export const countLives = (answers) => {
 
   return 3 - wrongAnswers;
 };
+
+export const addPointsForLive = (answers) => {
+  if (gameIsFinished(answers)) {
+    const lives = countLives(answers);
+    return lives * 50;
+  }
+
+  return 0;
+};
+
+export const countFinalPoints = (answers) => {
+  return countPointsForCorrectAnswers(answers) + addPointsForLive(answers);
+};

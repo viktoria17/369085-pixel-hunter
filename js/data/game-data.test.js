@@ -4,6 +4,8 @@ import {
   gameIsFinished,
   gameIsFailed,
   countLives,
+  addPointsForLive,
+  countFinalPoints,
 } from './game-data';
 
 describe(`Count points`, () => {
@@ -140,10 +142,72 @@ describe(`Count points`, () => {
     assert.equal(countPointsForCorrectAnswers(answers), 450);
   });
 
-  it(`should return 1150 points if the player answered all questions with an average speed and he has 3 lives`, () => {
+  it(`should add an additional 150 points for 3 remaining lives`, () => {
+    let answers = [];
 
+    for (let i = 0; i < 10; i++) {
+      answers.push({
+        time: 15,
+        isCorrect: true,
+      });
+    }
+
+    assert.equal(gameIsFinished(answers), true);
+    assert.equal(addPointsForLive(answers), 150);
   });
 
+  it(`should add an additional 100 points for 2 remaining lives`, () => {
+    let answers = [];
+
+    for (let i = 0; i < 9; i++) {
+      answers.push({
+        time: 15,
+        isCorrect: true,
+      });
+    }
+
+    answers.push({
+      time: 15,
+      isCorrect: false,
+    });
+
+    assert.equal(gameIsFinished(answers), true);
+    assert.equal(addPointsForLive(answers), 100);
+  });
+
+  it(`should not add additional 50 points for 0 remaining lives`, () => {
+    let answers = [];
+
+    for (let i = 0; i < 7; i++) {
+      answers.push({
+        time: 15,
+        isCorrect: true,
+      });
+    }
+
+    for (let i = 0; i < 3; i++) {
+      answers.push({
+        time: 15,
+        isCorrect: false,
+      });
+    }
+
+    assert.equal(gameIsFinished(answers), true);
+    assert.equal(addPointsForLive(answers), 0);
+  });
+
+  it(`should return 1150 points if the player answered all questions with an average speed and he has 3 lives`, () => {
+    let answers = [];
+
+    for (let i = 0; i < 10; i++) {
+      answers.push({
+        time: 15,
+        isCorrect: true,
+      });
+    }
+
+    assert.equal(countFinalPoints(answers), 1150);
+  });
 });
 
 describe(`Check if the game is over`, () => {
@@ -281,4 +345,3 @@ describe(`Count lives`, () => {
     assert.equal(countLives(answers), 3);
   });
 });
-
