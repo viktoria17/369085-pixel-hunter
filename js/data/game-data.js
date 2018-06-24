@@ -21,10 +21,7 @@ export const countPointsForCorrectAnswers = (answers) => {
 };
 
 export const gameIsFinished = (answers) => {
-  const amountOfQuestions = 10;
-  const amountOfAnsweredQuestions = answers.length;
-
-  if (amountOfAnsweredQuestions === amountOfQuestions) {
+  if (answers.length === 10) {
     return true;
   }
 
@@ -38,10 +35,7 @@ export const gameIsFinished = (answers) => {
 };
 
 export const gameIsFailed = (answers) => {
-  const amountOfQuestions = 10;
-  const amountOfAnsweredQuestions = answers.length;
-
-  if (amountOfAnsweredQuestions < amountOfQuestions) {
+  if (answers.length < 10) {
     return -1;
   }
 
