@@ -40,10 +40,10 @@ export const countLives = (answers) => {
   return 3 - wrongAnswers;
 };
 
-export const addPointsForLive = (answers) => {
+export const addPointsForLives = (answers) => {
   return isGameFinished(answers) ? countLives(answers) * 50 : 0;
 };
 
 export const countFinalPoints = (answers) => {
-  return countPointsForCorrectAnswers(answers) + addPointsForLive(answers);
+  return countPointsForCorrectAnswers(answers) + addPointsForLives(answers);
 };

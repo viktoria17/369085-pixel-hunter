@@ -1,3 +1,4 @@
+import {assert} from 'chai';
 import Timer from './timer';
 
 describe(`Timer`, () => {
@@ -9,6 +10,17 @@ describe(`Timer`, () => {
         done();
       }
     }).start();
+  });
+
+  it(`should test that method tick() correctly works`, () => {
+    const timer = new Timer({
+      seconds: 10
+    });
+
+    timer.tick();
+    timer.tick();
+
+    assert.equal(timer.secondsLeft, 8);
   });
 
 });

@@ -4,16 +4,19 @@ import {
   isGameFinished,
   isGameFailed,
   countLives,
-  addPointsForLive,
+  addPointsForLives,
   countFinalPoints,
 } from './game-data';
 
-describe(`Count points`, () => {
+const TIME_SLOW = 21;
+const TIME_FAST = 5;
+const TIME_AVERAGE = 15;
 
+describe(`Count points`, () => {
   it(`should add 100 points for one correct answer with an average speed`, () => {
     const answers = [
       {
-        time: 20,
+        time: TIME_AVERAGE,
         isCorrect: true,
       },
     ];
@@ -24,15 +27,15 @@ describe(`Count points`, () => {
   it(`should add 100 points for each correct answer with an average speed`, () => {
     const answers = [
       {
-        time: 10,
-        isCorrect: true,
-      },
-      {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: true,
       },
       {
         time: 20,
+        isCorrect: true,
+      },
+      {
+        time: 10,
         isCorrect: true,
       },
     ];
@@ -43,31 +46,20 @@ describe(`Count points`, () => {
   it(`should not add points for incorrect answers`, () => {
     const answers = [
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: false,
       },
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: true,
       },
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: false,
       },
     ];
 
     assert.equal(countPointsForCorrectAnswers(answers), 100);
-  });
-
-  it(`should add 150 points for one correct answer with a fast speed`, () => {
-    const answers = [
-      {
-        time: 9,
-        isCorrect: true,
-      },
-    ];
-
-    assert.equal(countPointsForCorrectAnswers(answers), 150);
   });
 
   it(`should add 150 points for each correct answer with a fast speed`, () => {
@@ -77,7 +69,7 @@ describe(`Count points`, () => {
         isCorrect: true,
       },
       {
-        time: 5,
+        time: TIME_FAST,
         isCorrect: true,
       },
     ];
@@ -85,25 +77,14 @@ describe(`Count points`, () => {
     assert.equal(countPointsForCorrectAnswers(answers), 300);
   });
 
-  it(`should add 50 points for one correct answer with a slow speed`, () => {
-    const answers = [
-      {
-        time: 21,
-        isCorrect: true,
-      },
-    ];
-
-    assert.equal(countPointsForCorrectAnswers(answers), 50);
-  });
-
   it(`should add 50 points for each correct answer with a slow speed`, () => {
     const answers = [
       {
-        time: 22,
+        time: TIME_SLOW,
         isCorrect: true,
       },
       {
-        time: 25,
+        time: TIME_SLOW,
         isCorrect: true,
       },
       {
@@ -118,68 +99,64 @@ describe(`Count points`, () => {
   it(`should calculate correctly answers with different speeds`, () => {
     const answers = [
       {
-        time: 5,
+        time: TIME_FAST,
         isCorrect: true,
       },
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: true,
       },
       {
-        time: 8,
+        time: TIME_SLOW,
         isCorrect: true,
       },
       {
-        time: 22,
-        isCorrect: true,
-      },
-      {
-        time: 5,
+        time: TIME_FAST,
         isCorrect: false,
       },
     ];
 
-    assert.equal(countPointsForCorrectAnswers(answers), 450);
+    assert.equal(countPointsForCorrectAnswers(answers), 300);
   });
 
   it(`should add an additional 150 points for 3 remaining lives`, () => {
     let answers = Array(10).fill({
-      time: 15,
+      time: TIME_AVERAGE,
       isCorrect: true,
     });
 
     assert.equal(isGameFinished(answers), true);
-    assert.equal(addPointsForLive(answers), 150);
+    assert.equal(addPointsForLives(answers), 150);
   });
 
   it(`should add an additional 100 points for 2 remaining lives`, () => {
     let answers = Array(9).fill({
-      time: 15,
+      time: TIME_AVERAGE,
       isCorrect: true,
     }).concat({
-      time: 15,
+      time: TIME_AVERAGE,
       isCorrect: false,
     });
 
     assert.equal(isGameFinished(answers), true);
-    assert.equal(addPointsForLive(answers), 100);
+    assert.equal(addPointsForLives(answers), 100);
   });
 
   it(`should not add additional 50 points for 0 remaining lives`, () => {
     let answers = Array(7).fill({
-      time: 15, isCorrect: true,
+      time: TIME_AVERAGE, isCorrect: true,
     }).concat(Array(3).fill({
-      time: 15,
+      time: TIME_AVERAGE,
       isCorrect: false,
     }));
 
     assert.equal(isGameFinished(answers), true);
-    assert.equal(addPointsForLive(answers), 0);
+    assert.equal(addPointsForLives(answers), 0);
   });
 
   it(`should return 1150 points if the player answered all questions with an average speed and he has 3 lives`, () => {
     let answers = Array(10).fill({
-      time: 15,
+      time: TIME_AVERAGE,
       isCorrect: true,
     });
 
@@ -190,7 +167,7 @@ describe(`Count points`, () => {
 describe(`Check if the game is over`, () => {
   it(`should finish the game if the player answered all questions`, () => {
     let answers = Array(10).fill({
-      time: 15,
+      time: TIME_AVERAGE,
       isCorrect: true,
     });
 
@@ -199,7 +176,7 @@ describe(`Check if the game is over`, () => {
 
   it(`should return -1 if the player answered less than 10 questions`, () => {
     const answers = Array(2).fill({
-      time: 15,
+      time: TIME_AVERAGE,
       isCorrect: true,
     });
 
@@ -211,7 +188,7 @@ describe(`Count lives`, () => {
 
   it(`should remain 3 lives if all answers are correct`, () => {
     const answers = Array(2).fill({
-      time: 15,
+      time: TIME_AVERAGE,
       isCorrect: true,
     });
 
@@ -220,7 +197,7 @@ describe(`Count lives`, () => {
 
   it(`should remain 1 life if the player made 2 mistakes`, () => {
     const answers = Array(2).fill({
-      time: 15,
+      time: TIME_AVERAGE,
       isCorrect: false,
     });
 
@@ -230,19 +207,19 @@ describe(`Count lives`, () => {
   it(`should remain 0 lives if the player made 3 mistakes`, () => {
     const answers = [
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: false,
       },
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: true,
       },
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: false,
       },
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: false,
       },
     ];
@@ -253,23 +230,23 @@ describe(`Count lives`, () => {
   it(`should end the game if the player made 4 mistakes`, () => {
     const answers = [
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: false,
       },
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: false,
       },
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: true,
       },
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: false,
       },
       {
-        time: 15,
+        time: TIME_AVERAGE,
         isCorrect: false,
       },
     ];
@@ -282,7 +259,7 @@ describe(`Count lives`, () => {
     const answers = [
       {
         time: 31,
-        isCorrect: ``
+        isCorrect: false
       },
     ];
 
